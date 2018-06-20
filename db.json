@@ -1,0 +1,7 @@
+{
+    "people": [
+        {"id":"1", "name":"Brian Knight", "age":44},
+        {"id":"2", "name":"Rudy Gay", "age":56},
+        {"id":"3", "name":"Stephen Hawking", "age":57}
+    ]
+  }
