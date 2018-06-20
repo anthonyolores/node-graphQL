@@ -74,9 +74,18 @@ const GetQuery= new GraphQLObjectType({
 const OperationQuery = new GraphQLObjectType({
     name:'OperationQuery',
     fields:{
+        /*
+        mutation{
+            AddPerson(id:"4", name: "view sonice", age: 23){
+                name,
+                age
+            }
+        }
+        **/
         AddPerson:{
             type:PersonType,
             args:{
+                id: {type: new GraphQLNonNull(GraphQLString)},
                 name: {type: new GraphQLNonNull(GraphQLString)},
                 age: {type: new GraphQLNonNull(GraphQLInt)}
             },
@@ -88,6 +97,14 @@ const OperationQuery = new GraphQLObjectType({
                 .then(res => res.data);
             }
         },
+        /*
+        mutation{
+            DeletePerson(id:53){
+                name,
+                age
+            }
+        }
+        **/
         DeletePerson:{
             type:PersonType,
             args:{
@@ -98,6 +115,13 @@ const OperationQuery = new GraphQLObjectType({
                 .then(res => res.data);
             }
         },
+        /* 
+        mutation{
+            EditPerson(id:"2", name: "Stephen Curry"){
+                name
+            }
+        }        
+        **/
         EditPerson:{
             type:PersonType,
             args:{
@@ -115,5 +139,5 @@ const OperationQuery = new GraphQLObjectType({
 
 module.exports = new GraphQLSchema({
     query: GetQuery, 
-    OperationQuery
+    mutation:OperationQuery
 });
